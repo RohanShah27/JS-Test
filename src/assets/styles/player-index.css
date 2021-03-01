@@ -72,3 +72,12 @@ h3 {
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 425px) {
+  .player-grid {
+    grid-template-columns: auto auto;
+  }
+  .player-list-header {
+    flex-direction: column;
+  }
+}
