@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../assets/styles/player-index.css";
-import playerImage from "../../assets/player-images/63706.jpg";
+import loader from "../../assets/player-images/loader.gif";
 export default class Players extends Component {
   componentDidMount() {
     // Call the function to get player list from given API
@@ -10,6 +10,7 @@ export default class Players extends Component {
   state = {
     playerList: [],
     searchString: "",
+    isLoading: true,
   };
   /**
    *@description Calls the given API endpoint to get the player data and then format it to display
@@ -21,6 +22,7 @@ export default class Players extends Component {
       .then((response) => response.json())
       .then((data) => (playerList = data.playerList));
     //declare an empty array to store formatted player data
+    this.setState({ ...this.state, isLoading: false });
     let formattedList = [];
     //loop through the objects
     for (var i = 0; i < playerList.length; i++) {
@@ -66,16 +68,6 @@ export default class Players extends Component {
   //save search string and display searc based players
   onChange = (event) => {
     this.setState({ ...this.state, searchString: event.target.value });
-    let playerListCopy = [...this.state.playerList];
-    let found = playerListCopy.filter((player) => {
-      return (
-        player.PFName.toLowerCase().indexOf(
-          event.target.value.toLowerCase()
-        ) !== -1 ||
-        player.TName.toLowerCase().indexOf(event.target.value.toLowerCase()) !==
-          -1
-      );
-    });
   };
   render() {
     let stateList = this.state.playerList;
@@ -104,6 +96,13 @@ export default class Players extends Component {
             />
           </div>
         </div>
+        {this.state.isLoading ? (
+          <div className="loader">
+            <img src={loader} />
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="player-grid">
           {/* map the players here */}
           {filteredList

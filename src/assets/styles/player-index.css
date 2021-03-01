@@ -65,3 +65,10 @@ h3 {
   outline: none;
   border: 1px solid #c4c4c4;
 }
+
+.loader {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
