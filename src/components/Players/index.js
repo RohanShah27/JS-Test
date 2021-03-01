@@ -76,9 +76,19 @@ export default class Players extends Component {
           -1
       );
     });
-    console.log("found: ", found);
   };
   render() {
+    let stateList = this.state.playerList;
+    let filteredList = stateList.filter((player) => {
+      return (
+        player.PFName.toLowerCase().indexOf(
+          this.state.searchString.toLowerCase()
+        ) !== -1 ||
+        player.TName.toLowerCase().indexOf(
+          this.state.searchString.toLowerCase()
+        ) !== -1
+      );
+    });
     return (
       <div className="main-container">
         <div className="player-list-header">
@@ -96,7 +106,7 @@ export default class Players extends Component {
         </div>
         <div className="player-grid">
           {/* map the players here */}
-          {this.state.playerList
+          {filteredList
             //sort the player list in ascending order of Value
             .sort((a, b) =>
               parseFloat(a.Value) < parseFloat(b.Value) ? -1 : 1
