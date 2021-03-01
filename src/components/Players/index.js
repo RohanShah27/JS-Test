@@ -90,6 +90,7 @@ export default class Players extends Component {
           <div className="search-box">
             <input
               type="text"
+              placeholder="Search for a player"
               onChange={(event) => {
                 this.onChange(event);
               }}
