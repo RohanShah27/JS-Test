@@ -1,0 +1,27 @@
+.player-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+}
+.player-card {
+  height: 350px;
+  width: 100%;
+  background-color: aqua;
+}
+.player-image {
+  height: 250px;
+  width: 100%;
+  object-fit: contain;
+}
+.player-image img {
+  height: 100%;
+  width: 100%;
+}
+.name-skill {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+}
